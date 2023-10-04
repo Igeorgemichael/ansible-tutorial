@@ -23,3 +23,18 @@
     apt:
        name: bashtop
     when: ansible_distribution == "Ubuntu"
+
+  - name: install httpd package
+    dnf:
+      name: httpd
+    when: ansible_distribution == "Fedora"
+
+  - name: add php support for apache
+    dnf:
+      name: php
+    when: ansible_distribution == "Fedora"
+
+  - name: install bashtop
+    dnf:
+       name: bashtop
+    when: ansible_distribution == "Fedora"
