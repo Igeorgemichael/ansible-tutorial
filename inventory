@@ -1,4 +1,4 @@
-michael@192.168.65.2
-michael@192.168.65.6
-michael@192.168.65.7
-miguelgeorge@192.168.65.3
+michael@192.168.65.2 apache_package=apache2 php_package=libapache2-mod-php
+michael@192.168.65.6 apache_package=apache2 php_package=libapache2-mod-php
+michael@192.168.65.7 apache_package=apache2 php_package=libapache2-mod-php
+miguelgeorge@192.168.65.3 apache_package=httpd php_package=php
