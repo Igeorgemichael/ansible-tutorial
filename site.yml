@@ -34,7 +34,7 @@
         update_cache: yes
       when: ansible_distribution == "Fedora"
 
-- host: db_servers
+- hosts: db_servers
   become: true
   tasks:
     - name: install mariadb package (Fedora)
@@ -48,3 +48,11 @@
         name: mariadb-server
         state: latest
       when: ansible_distribution == "Ubuntu"
+
+- hosts: file_servers
+  become: true
+  tasks:
+    - name: install samba package
+      package:
+        name: samba
+        state: latest
