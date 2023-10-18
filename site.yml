@@ -1,10 +1,8 @@
 ---
-
 - name: Maintaining the nodes
   hosts: all
   become: true
   tasks:
-
     - name: Install package updates (Fedora)
       tags: always
       dnf:
@@ -38,6 +36,15 @@
           - php
         update_cache: true
       when: ansible_distribution == "Fedora"
+
+    - name: Copy default site
+      tags: apache, apache2, httpd
+      ansible.builtin.copy:
+        src: default-site.html
+        dest: /var/www/html/ansindex.html
+        owner: michael
+        group: adm
+        mode: "0644"
 
 - name: Db_servers
   hosts: db_servers
