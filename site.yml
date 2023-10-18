@@ -6,12 +6,14 @@
   tasks:
 
     - name: Install package updates (Fedora)
+      tags: always
       dnf:
         update_only: true
         update_cache: true
       when: ansible_distribution == "Fedora"
 
     - name: Install package updates (Ubuntu)
+      tags: always
       apt:
         update_cache: true
       when: ansible_distribution == "Ubuntu"
@@ -21,6 +23,7 @@
   become: true
   tasks:
     - name: Install apache and php for Ubuntu servers
+      tags: apache,apache2,ubuntu
       apt:
         name:
           - apache2
@@ -28,6 +31,7 @@
       when: ansible_distribution == "Ubuntu"
 
     - name: Install httpd and php for Fedora servers
+      tags: apache,httpd,fedora
       dnf:
         name:
           - httpd
@@ -40,11 +44,13 @@
   become: true
   tasks:
     - name: Install mariadb package (Fedora)
+      tags: db,maria,fedora
       dnf:
         name: mariadb
       when: ansible_distribution == "Fedora"
 
     - name: Install mariadb package (Ubuntu)
+      tags: db,maria,ubuntu
       apt:
         name: mariadb-server
       when: ansible_distribution == "Ubuntu"
@@ -54,5 +60,6 @@
   become: true
   tasks:
     - name: Install samba package
+      tags: samba
       package:
         name: samba
